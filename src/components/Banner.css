@@ -1,0 +1,5 @@
+.banner-img{
+    max-height: 100vh;
+    min-height: 100vh;
+    filter: brightness(50%);
+}

@@ -1,0 +1,224 @@
+.snav{
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 5.5rem;
+    background-color: transparent;
+    align-items: center;
+    z-index: 10;
+    transition: .6s ease-in-out;
+}
+.smove-navbar{
+    top: -5.5rem;
+    transition: .6s ease-in-out;
+    /* background-color: red; */
+}
+.snavbar-white{
+    background-color: #feffff;
+    color: #1a1a1d;
+    top: 0;
+}
+.snav-items{
+    display: flex;
+}
+.snav-title{
+    font-size: 1.8rem;
+    color: #feffff;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+.snav-hamburger{
+    margin-left: 1.8rem;
+}
+.snav-hamburger img{
+    height: 1.7rem;
+    width: 1.7rem;
+    /* filter: invert(100%); */
+}
+
+.snav-btn{
+    text-decoration: none;
+    height: 100%;
+    width: 2.2rem;
+    overflow: hidden;
+    background-color: transparent;
+}
+.sbtn-black{
+    filter: invert(0%);
+}
+.snav-btn img{
+    width:  1.3rem;
+    height: 1.3rem;
+}
+.simg-btn{
+filter: invert(100%);
+}
+.scart-quantity{
+    text-decoration: none;
+    color: #feffff;
+}
+.stext-black{
+    color: #1a1a1d;
+}
+
+
+
+
+.cart-main{
+  background-color: #feffff;
+  height: 100vh;
+  width: 28rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .3s linear;
+}
+.cart-close{
+    background-color: #feffff;
+    height: 100vh;
+    width: 28rem;
+    position: absolute;
+    right: -28rem;
+    top: 0;
+    transition: .3s linear;
+}
+
+.cross-btn{
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 25px;
+    margin-right: 20px;
+}
+
+.cart-top{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}
+
+.cart-title{
+    margin-left: 25px;
+    margin-top: 15px;
+}
+
+
+.cart-checkout{
+    width: 100%;
+    padding: 25px;
+}
+.cart-checkout button{
+    width: 100%;
+    height:3rem;
+    background-color: #1a1a1d;
+    border: none;
+    color: #feffff;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.cart-overlay{
+    position: absolute;
+    background-color: #feffffb8;
+    width: 100%;
+    height: 100vh;
+    left: 0;
+    top: 0;
+}
+.sub-total{
+    font-size: 15px;
+    font-weight: 500;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+    padding-top: 20px;
+}
+.display-none{
+    display: none;
+}
+
+
+/* SIDE BAR CSS  */
+.sidebar-overlay{
+    position: absolute;
+    background-color: #feffffb8;
+    width: 100%;
+    height: 100vh;
+    left: 0;
+    top: 0;
+}
+.sidebar-main{
+    padding: 18px;
+    z-index: 11;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 24rem;
+    background-color: #feffff;
+    transition: .3s linear;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}.sidebar-close{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 24rem;
+    left: -24rem;
+    background-color: #feffff;
+    transition: .3s linear;
+}
+.sidebar-top{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+}
+.userstate-btn{
+    font-size: 22px;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: none;
+}
+.close-sidebar{
+    cursor: pointer;
+}
+.sidebar-items{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-transform: uppercase;
+}
+.sidebar-items .sidebar-item{
+    font-size: 17px;
+    letter-spacing: 4px;
+    height: 4rem;
+    border-top: 1px solid rgba(128, 128, 128, 0.247);
+    /* border-bottom: 1px solid rgba(128, 128, 128, 0.247); */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.sidebar-bottom{
+    width: 100%;
+    height: 6rem;
+    border-top:  1px solid rgba(128, 128, 128, 0.247);
+    border-bottom:  1px solid rgba(128, 128, 128, 0.247);
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+}
+.row{
+    width: 100%;
+    display: flex;
+}
+.icon{
+    width: 7rem;
+    height: 3rem;
+    border: 1px solid rgba(128, 128, 128, 0.217);
+}
+/* SIDE BAR CSS  */
