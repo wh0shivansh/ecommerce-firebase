@@ -10,6 +10,9 @@
     align-items: center;
     top: 0;
 }
+.display-none{
+    display: none;
+}
 .checkout-container{
     padding:10px 20px;
     width: 52rem;

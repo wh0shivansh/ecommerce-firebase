@@ -18,46 +18,39 @@ const SpecialNavbar = () => {
   const [sisDark,ssetisDark] = useState(false);
   const [subtotal,setsubtotal] = useState(0);
 
+  const [isActive,setActive ] = useState(false);
+  const [isActiveOverlay,setActiveOverlay ] = useState(false);
+
+  const [isActiveCheckout,setActiveCheckout ] = useState(false);
+
+  const [isActiveCart,setActiveCart ] = useState(false);
+  const [isActiveCartOverlay,setActiveCartOverlay ] = useState(false);
+
   const [cartItems,setcartItems] = useState([]);
   // console.log(id);
   
+    const toggleSideBar=()=>{
+      setActive(!isActive);
+      toggleOverlay();
+    }      
+    const toggleOverlay=()=>{
+      setActiveOverlay(!isActiveOverlay);
+    }    
+    
+    const toggleCheckout=()=>{
+      setActiveCheckout(!isActiveCheckout);
+    }    
 
 
-  const closeCart=()=>{
-    const cart = document.getElementById('cart');
-    const cartOverlay = document.getElementById('cart-overlay');
-    cart.classList.add('cart-close');
-    cart.classList.remove('cart-main');
-    cartOverlay.classList.remove('cart-overlay');
-    cartOverlay.classList.add('display-none');
-  }  
-  const openSidebar=()=>{
-    const sidebar = document.getElementById('sidebar');
-    const sidebarOverlay = document.getElementById('sidebar-overlay');
-    sidebar.classList.add('sidebar-main');
-    sidebar.classList.remove('sidebar-close');    
-    sidebarOverlay.classList.add('sidebar-overlay');
-    sidebarOverlay.classList.remove('display-none');
-  }
-   const closeSidebar=()=>{
-    const sidebar = document.getElementById('sidebar');
-    const sidebarOverlay = document.getElementById('sidebar-overlay');
-    sidebar.classList.add('sidebar-close');
-    sidebar.classList.remove('sidebar-main');
-    sidebarOverlay.classList.remove('sidebar-overlay');
-    sidebarOverlay.classList.add('display-none');
-  }  
-  
-  const openCart=()=>{
-    const cart = document.getElementById('cart');
-    const cartOverlay = document.getElementById('cart-overlay');
-    cart.classList.add('cart-main');
-    cart.classList.remove('cart-close');    
-    cartOverlay.classList.add('cart-overlay');
-    cartOverlay.classList.remove('display-none');
-  }
-  
-  
+
+    const toggleCart=()=>{
+      setActiveCart(!isActiveCart);
+      toggleCartOverlay();
+    }   
+    const toggleCartOverlay=()=>{
+      setActiveCartOverlay(!isActiveCartOverlay);
+    }
+
 
   function GetCurrentUser() {
     const [user, setUser] = useState("");
@@ -107,7 +100,7 @@ useEffect(()=>{
     auth.signOut().then(()=>{
       navigate('/login');
     })
-  }
+  };
 
   const [cartdata,setCartData] = useState([]);
   if(loggedUser){
@@ -122,7 +115,7 @@ useEffect(()=>{
       }).catch("Error");
     }
     getcartData();
-  }
+  };
 
   useEffect(()=>{
     var total =0;
@@ -137,16 +130,18 @@ useEffect(()=>{
     <>
     {!loggedUser&&
       <div id='navbar' className='snav'>
-        <div className="snav-hamburger snav-items" onClick={openSidebar}>
+        <div className="snav-hamburger snav-items" onClick={toggleSideBar}>
           <img src={MenuIcon}  className={`${sisDark?'sbtn-black':'simg-btn'}`}alt="" />
-
-          <div className="sidebar-close" id='sidebar'>
+          <div className={isActive?"sidebar-main":"sidebar-close"} id='sidebar'>
     <div className="sidebar-top">
       <div className="userstate">
-      <Link to={"/login"}></Link>    
+      <Link to={"/login"}>
          <button className='userstate-btn'>login</button>
+        </Link>    
       </div>
-      <div className="close-sidebar" onClick={closeSidebar}>X</div>
+      {/* <button className="close-sidebar" onClick={closeSidebar}>X</button> */}
+      <button className='close-sidebar' onClick={toggleSideBar}>X</button>
+      
     </div>
     <div className="sidebar-items">
       <div className="sidebar-item item1">download app</div>
@@ -170,6 +165,7 @@ useEffect(()=>{
   </div>
 </div>
 
+<div className={isActiveOverlay?"sidebar-overlay":"display-none"} id='sidebar-overlay' onClick={toggleSideBar}></div>
 
 
         <div className={`snav-title snav-item ${sisDark?'stext-black':''}`}>
@@ -184,23 +180,19 @@ useEffect(()=>{
           </div></Link>
         <Link to={"/register"}><div className='snav-btn'>
             <img src={ProfileIcon} className={`${sisDark?'sbtn-black':'simg-btn'}`}  alt="" />
-          </div></Link>        
+          </div></Link>       
           <Link to={"#"}><div className='snav-btn'>
             <img src={HeartIcon}  className={`${sisDark?'sbtn-black':'simg-btn'}`}alt="" />
           </div></Link>
-        {/* <Link to={`/error`}>
-          <div className="snav-btn">
-            <img src={CartIcon} className={`${sisDark?'sbtn-black':'simg-btn'}`} alt="" />
-            <span className='scart-quantity'>{cartdata!=""?cartdata.length:'0'}</span>
-          </div>
-        </Link> */}
+
+
         <span style={{width:'1.5rem'}}></span>
         </div>
       </div>
 }
 {loggedUser&&
 <div id='navbar' className='snav'>
-<div className="snav-hamburger snav-items" onClick={openSidebar}>
+<div className="snav-hamburger snav-items" onClick={toggleSideBar}>
   <img src={MenuIcon}  className={`${sisDark?'sbtn-black':'simg-btn'}`}alt="" />
 
 
@@ -208,10 +200,10 @@ useEffect(()=>{
   <div className="sidebar-close" id='sidebar'>
     <div className="sidebar-top">
       <div className="userstate">
-      <Link to={"/"}></Link>    
+      <Link to={"/"}></Link>
          <button onClick={logOut} className='logout-btn userstate-btn'>Logout</button>
       </div>
-      <div className="close-sidebar" onClick={closeSidebar}>X</div>
+      <button className="close-sidebar" onClick={toggleSideBar}>X</button>
     </div>
     <div className="sidebar-items">
       <div className="sidebar-item item1">download app</div>
@@ -256,15 +248,16 @@ useEffect(()=>{
     <img src={HeartIcon}  className={`${sisDark?'sbtn-black':'simg-btn'}`}alt="" />
   </div></Link>
 {/* <Link to={`/cart/${loggedUser[0].uid}/`}> */}
-  <div className="snav-btn" onClick={openCart}>
+  <div className="snav-btn" onClick={toggleCart}>
     <img src={CartIcon} className={`${sisDark?'sbtn-black':'simg-btn'}`} alt="" />
     <span className='scart-quantity'>{cartdata!=""?cartdata.length:'0'}</span>
   </div>
 {/* </Link> */}
-<div className="display-none" id='cart-overlay' onClick={closeCart}></div>
-<div className="display-none" id='sidebar-overlay' onClick={closeSidebar}></div>
-<div className='cart-close' id='cart'>
-  <span className='cart-top'>  <div className="cross-btn" onClick={closeCart}>X</div>
+<div className={isActiveCartOverlay?"cart-overlay":"display-none"} id='cart-overlay' onClick={toggleCart}></div>
+{/* <div className="display-none" id='sidebar-overlay' onClick={closeSidebar}></div> */}
+<div className={isActiveCart?"cart-main":"cart-close"} id='cart'>
+  <span >  
+  <div className="cross-btn" onClick={toggleCart}>X</div>
   <div className="cart-title">
           cart
         </div></span>
@@ -287,13 +280,61 @@ userid={loggedUser[0].uid}
         </div>
             <div className="cart-checkout">
 
-        <Link to={"/ordersummary"}><button>Checkout</button></Link>
+       <button onClick={toggleCheckout}>Checkout</button>
             </div>
 </div>  
-<div className="checkout-func">
 
-            <Checkout items={cartItems}/>
+<div className="checkout-box">
+<div className={isActiveCheckout?'checkout':'display-none'} id='checkout'>
+            <div className="checkout-container">
+                <div className="checkout-top">
+                    <div className="logo">Drip</div>
+                    <div className="cross-rounded" onClick={toggleCheckout}>X</div>
+                </div>
+                <div className="checkout-middle">
+                    <div className="checkout-left"></div>
+                    <div className="checkout-right">
+                        <div className="ordersummary">Order Summary ^</div>
+                        <div className="ordersummary-box">
+                            <div className="products-window">
+                                {cartItems.map((item)=>(
+                                    <div className="c-prod" key={item.id}>
+                                        <div className="c-img">
+                                            <img src={`${item.product.productImage}`} alt="" />
+                                        </div>
+                                        <div className="c-otherinfo">
+                                            <div className="c-title">{item.product.productTitle}</div>
+                                            <div className="c-qunatity">Quantity: {item.quantity}</div>
+                                            <div className="c-price">Price: Rs.{item.product.price}</div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="subtotal-window">
+                                <span>Subtotal</span>
+                                <span></span>
+                            </div>
+                            <div className="shipping-window">
+                                <span>Shipping</span>
+                                <span></span>
+                            </div>
+                            <div className="topay-window">
+                                <span>To Pay</span>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div className="discount">
+                            <input type="text" placeholder='Discount Code'/>
+                        </div>
+                    </div>
+                </div>
+                <div className="checkout-bottom"></div>
+
+            </div>
+        </div>
 </div>
+          
+
 
 
 <span style={{width:'1.5rem'}}></span>

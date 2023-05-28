@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './Checkout.css';
 
-const Checkout = (items) => {
+const Checkout = ({items,style}) => {
 
     const closeCheckout=()=>{
         const checkout = document.getElementById('checkout');

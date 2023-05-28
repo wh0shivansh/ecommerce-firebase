@@ -19,6 +19,7 @@
     color: #1a1a1d;
     top: 0;
 }
+
 .snav-items{
     display: flex;
 }
@@ -186,6 +187,9 @@ filter: invert(100%);
 }
 .close-sidebar{
     cursor: pointer;
+    background-color: transparent;
+    border: none;
+    background-color: transparent;
 }
 .sidebar-items{
     width: 100%;
@@ -222,3 +226,106 @@ filter: invert(100%);
     border: 1px solid rgba(128, 128, 128, 0.217);
 }
 /* SIDE BAR CSS  */
+
+
+
+/* CHECKOUT CSS  */
+.checkout{
+    background-color: #feffffb8;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+}
+.display-none{
+    display: none;
+}
+.checkout-container{
+    padding:10px 20px;
+    width: 52rem;
+    height: 32rem;
+    background-color: #feffff;
+    box-shadow: 0 0 4px rgba(128, 128, 128, 0.173);
+    border-radius: 20px;
+
+}
+.checkout-top{
+    display: flex;
+    justify-content: space-between;
+    height: 2rem;
+}
+.cross-rounded{
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 50%;
+    border: 1px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.checkout-middle{
+    width: 100%;
+    height: calc(100% - 2rem);
+    display: flex;
+}
+.checkout-left{
+    width: 60%;
+}
+.checkout-right{
+    width: 40%;
+    height: 100%;
+    /* background-color: red; */
+}
+.ordersummary{
+    height: 1.5rem;
+}
+.ordersummary-box{
+    /* display: none; */
+    /* background-color: green; */
+    height: 17rem;
+}
+.products-window{
+    margin-top: 10px;
+    /* background-color: yellow; */
+    height: 5.8rem;
+    border-radius: 20px;
+    overflow-y: scroll;
+    scrollbar-width: 20px;
+}
+.subtotal-window{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.c-prod{
+    width: 100%;
+    height: 100%;
+    max-height: 6.5rem;
+    /* background-color: red; */
+    display: flex;
+}
+.c-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5.5rem;
+    background-color: rgba(128, 128, 128, 0.315);
+    margin-right: 15px;
+}
+.c-otherinfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 14px;
+}   
+.c-img img{
+    transform: scale(0.7);
+    max-width: 100%;
+    max-height: 100%;
+}
+/* CHECKOUT CSS  */

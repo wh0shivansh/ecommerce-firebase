@@ -64,20 +64,24 @@ const Navbar = () => {
   }
 
   const openSidebar=()=>{
-    const sidebar = document.getElementById('sidebar');
-    const sidebarOverlay = document.getElementById('sidebar-overlay');
-    sidebar.classList.add('sidebar-main');
-    sidebar.classList.remove('sidebar-close');    
-    sidebarOverlay.classList.add('sidebar-overlay');
-    sidebarOverlay.classList.remove('display-none');
+      const sidebar = document.getElementById('sidebar');
+      const sidebarOverlay = document.getElementById('sidebar-overlay');
+      if(sidebar&&sidebarOverlay){
+        sidebar.classList.add('sidebar-main');
+        sidebar.classList.remove('sidebar-close');    
+        sidebarOverlay.classList.add('sidebar-overlay');
+        sidebarOverlay.classList.remove('display-none');
+      }
   }
    const closeSidebar=()=>{
     const sidebar = document.getElementById('sidebar');
     const sidebarOverlay = document.getElementById('sidebar-overlay');
-    sidebar.classList.add('sidebar-close');
-    sidebar.classList.remove('sidebar-main');
-    sidebarOverlay.classList.remove('sidebar-overlay');
-    sidebarOverlay.classList.add('display-none');
+    if(sidebar&&sidebarOverlay){
+      sidebar.classList.add('sidebar-close');
+      sidebar.classList.remove('sidebar-main');
+      sidebarOverlay.classList.remove('sidebar-overlay');
+      sidebarOverlay.classList.add('display-none');
+    }
   }  
 
 
@@ -94,7 +98,7 @@ const Navbar = () => {
       <Link to={"/login"}></Link>    
          <button className='userstate-btn'>login</button>
       </div>
-      <div className="close-sidebar" onClick={closeSidebar}>X</div>
+      <button className="close-sidebar" onClick={closeSidebar}>X</button>
     </div>
     <div className="sidebar-items">
       <div className="sidebar-item item1">download app</div>
@@ -160,7 +164,7 @@ const Navbar = () => {
       <Link to={"/login"}></Link>    
          <button className='userstate-btn'>login</button>
       </div>
-      <div className="close-sidebar" onClick={closeSidebar}>X</div>
+      <button className="close-sidebar" onClick={closeSidebar}>X</button>
     </div>
     <div className="sidebar-items">
       <div className="sidebar-item item1">download app</div>
